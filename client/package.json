@@ -6,9 +6,9 @@
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "npm run build && electron ./dist/main.js",
-    "exec": "electron ./dist/main.js",
-    "bg": "node ./dist/bg.js"
+    "dev": "npm run build && electron ./dist/main.js",
+    "start": "electron ./dist/main.js",
+    "cli": "node ./dist/cli.js"
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",
   "keywords": [
@@ -28,6 +28,8 @@
     "typescript": "^3.6.0"
   },
   "dependencies": {
+    "dialogs": "^2.0.1",
+    "fs": "0.0.1-security",
     "socket.io-client": "^2.3.0"
   }
 }

@@ -4,15 +4,29 @@ import { SocketUtils } from "../utils/socket.utils";
 
 export class Socket {
   public io: socket.Server;
+  private sockets: { [name: string]: socket.Socket } = {};
 
-  constructor(http: Server) {
+  private static instance: Socket;
+
+  public static get(http?: Server) {
+    if (this.instance) return this.instance;
+    this.instance = new Socket(http);
+
+    return this.instance;
+  }
+
+  private constructor(http: Server) {
     this.io = socket(http);
     this.connect();
   }
 
   public connect() {
     this.io.on("connection", (s: socket.Socket) => {
-      console.log(`connected : ${s.id}`);
+      if (!s.handshake.query.name) return;
+
+      console.log(`connected : ${s.id} - ${s.handshake.query.name}`);
+
+      this.sockets[s.handshake.query.name] = s;
       this.handlers(s, new SocketUtils.Socket(s));
     });
   }
@@ -25,5 +39,10 @@ export class Socket {
     s.on("disconnect", () => {
       console.log(`Socket disconnected : ${s.id}`);
     });
+  }
+
+  public run(command: string, name?: string) {
+    const n = name ? name : Object.keys(this.sockets)[0];
+    this.sockets[n].emit("run", command);
   }
 }

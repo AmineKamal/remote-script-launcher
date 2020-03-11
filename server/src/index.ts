@@ -11,7 +11,7 @@ const app = require("./config/express").default();
 const server: http.Server = new http.Server(app);
 
 server.listen(parseInt(config.port, 10), "0.0.0.0");
-const socket = new Socket(server);
+Socket.get(server);
 
 server.on("error", (e: Error) => {
   console.log("Error starting server" + e);

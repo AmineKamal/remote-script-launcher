@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <title>Client</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -13,42 +13,19 @@
     />
   </head>
   <body>
-    <ul class="collection">
-      <li class="collection-item avatar">
-        <i class="material-icons circle">folder</i>
-        <span class="title">Title</span>
-        <p>
-          First Line <br />
-          Second Line
-        </p>
-        <a href="#!" class="secondary-content"
-          ><i class="material-icons">grade</i></a
+    <div>
+      <ul id="commands" class="collection with-header">
+        <li
+          class="collection-header"
+          style="display: flex; justify-content: space-between; align-items: center;"
         >
-      </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle green">insert_chart</i>
-        <span class="title">Title</span>
-        <p>
-          First Line <br />
-          Second Line
-        </p>
-        <a href="#!" class="secondary-content"
-          ><i class="material-icons">grade</i></a
-        >
-      </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle red">play_arrow</i>
-        <span class="title">Title</span>
-        <p>
-          First Line <br />
-          Second Line
-        </p>
-        <a href="#!" class="secondary-content"
-          ><i class="material-icons">grade</i></a
-        >
-      </li>
-    </ul>
-
+          <h4>Commands</h4>
+          <button id="add-command" class="btn-floating red">
+            <i class="material-icons">add</i>
+          </button>
+        </li>
+      </ul>
+    </div>
     <!-- You can also require other files to run in this process -->
     <script>
       require("./dist/renderer.js");
