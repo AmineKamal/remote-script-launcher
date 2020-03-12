@@ -90,8 +90,10 @@ function createCommand(name: string) {
 }
 
 const add = async () => {
+  let name: string;
+
   do {
-    const name = await dialogs.prompt("Enter the name of the new command");
+    name = await dialogs.prompt("Enter the name of the new command");
     if (!name) return;
 
     if (app.keys().includes(name))
@@ -103,6 +105,8 @@ const add = async () => {
   );
 
   if (!command) return;
+
+  // console.log(name, command);
 
   app.editCommand(name, command);
   createCommand(name);

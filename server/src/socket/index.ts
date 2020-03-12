@@ -42,7 +42,9 @@ export class Socket {
   }
 
   public run(command: string, name?: string) {
-    const n = name ? name : Object.keys(this.sockets)[0];
-    this.sockets[n].emit("run", command);
+    return new Promise(resolve => {
+      const n = name ? name : Object.keys(this.sockets)[0];
+      this.sockets[n].emit("run", command, resolve);
+    });
   }
 }

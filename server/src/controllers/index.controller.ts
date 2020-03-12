@@ -6,9 +6,9 @@ export default class IndexController {
     res.render("index", { title: "Remote Script Launcher Server" });
   }
 
-  public run(req: Request, res: Response, next: Function): void {
-    Socket.get().run("ls");
-    res.json(null);
+  public async run(req: Request, res: Response, next: Function): Promise<void> {
+    const r = await Socket.get().run("ls");
+    res.json(r);
   }
 }
 

@@ -67,9 +67,8 @@ export class App {
   }
 
   private handlers() {
-    this.s.on("run", async (command: string) => {
-      const res = await this.run(command);
-      this.s.emit("res", res);
+    this.s.on("run", async (command: string, cb: (arg: any) => void) => {
+      cb(await this.run(command));
     });
   }
 }
