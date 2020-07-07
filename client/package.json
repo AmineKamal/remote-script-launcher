@@ -23,7 +23,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "@types/socket.io-client": "^1.4.32",
-    "electron": "^6.0.8",
+    "electron": "^7.2.4",
     "tslint": "^5.19.0",
     "typescript": "^3.6.0"
   },
